@@ -5,7 +5,7 @@ const doc = {
         title: 'My API',
         description: 'Description'
     },
-    host: 'localhost:3000',
+    host: 'flash-findz-backend.onrender.com',
     tags: [
         {
             name: 'Authentication'
@@ -14,7 +14,7 @@ const doc = {
     components: {
         securitySchemes:{
             bearerAuth: {
-                type: 'http',
+                type: 'https',
                 scheme: 'bearer'
             }
         }

@@ -1,9 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const { getUserDetails } = require('../../controllers/user');
-const authMiddleware = require('../../middlewares/auth'); // The middleware you provided
+const express = require("express");
+const { registerUser, loginUser, getUserProfile, updateUserProfile, deleteUser } = require("../../controllers/user");
+const authMiddleware = require("../../middlewares/auth");
 
-// Route to get user details with authorization
-router.get('/me', authMiddleware, getUserDetails);
+const router = express.Router();
+
+// **Public Routes**
+router.post("/register", registerUser); // Register
+router.post("/login", loginUser); // Login
+
+// **Protected Routes (Require Authentication)**
+router.get("/profile", authMiddleware, getUserProfile); // Get user profile
+router.put("/profile", authMiddleware, updateUserProfile); // Update user profile
+router.delete("/delete", authMiddleware, deleteUser); // Delete user account
 
 module.exports = router;

@@ -22,7 +22,7 @@ const doc = {
 };
 
 const outputFile = './swagger-output.json';
-const routes = ['./routes/auth/index.js'];
+const routes = ['./routes/user/index.js'];
 
 swaggerAutogen(outputFile, routes, doc).then(() => {
     require('./server.js'); // Your project's root file

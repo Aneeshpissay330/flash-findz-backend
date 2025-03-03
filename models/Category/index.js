@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const mongoose = require("mongoose");
 
-const categorySchema = new Schema({
-  name: { type: String, required: true, unique: true },
-  description: { type: String },
-  image: { type: String }, // ImageKit URL
-  parentCategory: { type: Schema.Types.ObjectId, ref: 'Category', default: null }, // For subcategories
-  status: { type: Boolean, default: true }, // true (active) or false (inactive)
-  createdBy: { type: Schema.Types.ObjectId, ref: 'User' }, // User who created the category
-  createdAt: { type: Date, default: Date.now }
-});
+const CategorySchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, unique: true },
+    parentCategory: { type: mongoose.Schema.Types.ObjectId, ref: "Category", default: null },
+    description: { type: String },
+    image: { type: String }, // Optional: Store category image URL
+    isActive: { type: Boolean, default: true },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Category', categorySchema);
+module.exports = mongoose.model("Category", CategorySchema);
